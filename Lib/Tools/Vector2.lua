@@ -1,7 +1,11 @@
+Mathf   =   require "Lib/Tools/Mathf"
+
+
 local Vector2 = {x=0, y=0}
+Vector2.__index = Vector2;
 
 function Vector2.new(x, y)
-    local o = setmetatable({}, {__index = Vector2})
+    local o = setmetatable({}, Vector2)
     o.x = x
     o.y = y
     return o
@@ -13,6 +17,17 @@ end
 
 function Vector2.one()
     return Vector2.new(1,1)
+end
+
+function Vector2:distance(other)
+    local vx = self.x - other.x
+    local vy = self.y - other.y
+    return math.sqrt((vx * vx) + (vy * vy))
+end
+
+function Vector2:clamp(min, max)
+    self.x = Mathf.clamp(self.x, min.x, max.x)
+    self.y = Mathf.clamp(self.y, min.y, max.y)
 end
 
 function Vector2:__add(other)

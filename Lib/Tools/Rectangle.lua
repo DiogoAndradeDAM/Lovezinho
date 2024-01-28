@@ -1,9 +1,10 @@
 Vector2 =   require "Lib/Tools/Vector2"
 
 local Rectangle = {position = Vector2.zero(), width = 0, height = 0}
+Rectangle.__index = Rectangle
 
 function Rectangle.new(pos, w, h)
-    local o = setmetatable({}, {__index = Rectangle})
+    local o = setmetatable({}, Rectangle)
     o.position = pos
     o.width = w
     o.height = h
@@ -28,6 +29,20 @@ function Rectangle:intersect(other)
     (self:getLeft() < other:getRight()) and
     (other:getTop() < self:getBottom()) and
     (self:getTop() < other:getBottom())
+end
+
+function Rectangle:inflate(horizontalAmount, verticalAmount)
+    self.position.x = self.position.x - horizontalAmount/2
+    self.position.y = self.position.y - verticalAmount/2
+    self.width = self.width + horizontalAmount
+    self.height = self.height + verticalAmount
+end
+
+function Rectangle:__add(other)
+    return Rectangle.new(self.position, self.width + other.width, self.height + other.height)
+end
+function Rectangle:__sub(other)
+    return Rectangle.new(self.position, self.width - other.width, self.height - other.height)
 end
 
 return Rectangle
