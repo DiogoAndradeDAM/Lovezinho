@@ -1,4 +1,4 @@
-Vector2 =   require "Lib/Tools/Vector2"
+Vector2 =   require     "Lib/Tools/Vector2"
 
 local Rectangle = {position = Vector2.zero(), width = 0, height = 0}
 Rectangle.__index = Rectangle

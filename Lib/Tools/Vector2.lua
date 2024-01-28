@@ -30,6 +30,10 @@ function Vector2:clamp(min, max)
     self.y = Mathf.clamp(self.y, min.y, max.y)
 end
 
+function Vector2:normalize()
+    return 1.00 / Mathf.normalize(self.x, self.y)
+end
+
 function Vector2:__add(other)
     return Vector2.new(self.x + other.x, self.y + other.y)
 end

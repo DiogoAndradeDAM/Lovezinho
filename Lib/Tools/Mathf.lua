@@ -9,5 +9,9 @@ function Mathf.clamp(value, min, max)
     return value
 end
 
+function Mathf.normalize(x, y)
+    return math.sqrt((x*x) + (y*y))
+end
+
 
 return Mathf

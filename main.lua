@@ -23,6 +23,7 @@ function love.update(dt)
         player:inflate(-20, -20)
     end
 
+
     if other:intersect(player) then
         color = {0,1,0,1}
     else
