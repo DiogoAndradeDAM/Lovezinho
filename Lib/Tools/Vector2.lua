@@ -31,7 +31,17 @@ function Vector2:clamp(min, max)
 end
 
 function Vector2:normalize()
-    return 1.00 / Mathf.normalize(self.x, self.y)
+    local norm = 1.00 / Mathf.normalize(self.x, self.y)
+    return Vector2.new(self.position.x * norm, self.posiiton.y * norm)
+end
+
+function Vector2:translateVec(vector)
+    self.position = self.position + vector
+end
+
+function Vector2:translate(x, y)
+    self.position.x = self.position.x + x
+    self.position.y = self.position.y + y
 end
 
 function Vector2:__add(other)

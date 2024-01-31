@@ -9,7 +9,7 @@ function Mathf.clamp(value, min, max)
     return value
 end
 
-function Mathf.normalize(x, y)
+function Mathf.magnitude(x, y)
     return math.sqrt((x*x) + (y*y))
 end
 
