@@ -1,8 +1,8 @@
-local UpdateManager = {}
+local UpdateManager = {objList = {}}
+UpdateManager.__index = UpdateManager
 
 function UpdateManager.new()
     local o = setmetatable({}, UpdateManager)
-    o.__index = UpdateManager
     o.objList = {}
     return o
 end
@@ -14,10 +14,12 @@ function UpdateManager:update(dt)
 end
 
 function UpdateManager:add(obj)
+    assert(obj ~= nil, "ERROR: The value passed in UpdateManager is nil")
     table.insert(self.objList, obj)
 end
 
 function UpdateManager:remove(obj)
+    
     for key, value in pairs(self.objList) do
         if value == obj then
             table.remove(self.objList, key)
