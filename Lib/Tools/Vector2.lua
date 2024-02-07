@@ -19,6 +19,14 @@ function Vector2.one()
     return Vector2.new(1,1)
 end
 
+function Vector2.isVector2(vec)
+    if getmetatable(vec) ~= Vector2 then
+        return false
+    else
+        return true
+    end
+end
+
 function Vector2:distance(other)
     local vx = self.x - other.x
     local vy = self.y - other.y
@@ -33,6 +41,16 @@ end
 function Vector2:normalize()
     local norm = 1.00 / Mathf.normalize(self.x, self.y)
     return Vector2.new(self.position.x * norm, self.posiiton.y * norm)
+end
+
+function Vector2:scale(scale)
+    self.x = self.x * scale
+    self.y = self.y * scale
+end
+
+function Vector2:inverse()
+    self.x = self.x * -1
+    self.y = self.y * -1
 end
 
 function Vector2:translateVec(vector)
@@ -77,7 +95,7 @@ function Vector2:__unm()
 end
 
 function Vector2:__tostring()
-    return "(X: ".. self.x ..", Y: ".. self.y ..")"
+    return ("Vector2(X: %d, Y: %d)"):format(self.x, self.y)
 end
 
 return Vector2

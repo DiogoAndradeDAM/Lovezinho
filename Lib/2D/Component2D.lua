@@ -8,7 +8,8 @@ function Component2D.new(params)
     local o = setmetatable({}, Component2D)
     o.position = params.position
     o.body = params.body
-    o.color = params.color
+    o.spritesheet = params.spritesheet
+    o.srcRectangle = params.srcRectangle or Rectangle.new(0,0, o.spritesheet:getDimensions())
     return o
 end
 
@@ -17,13 +18,11 @@ function Component2D:initialize()
 end
 
 function Component2D:update(dt)
-    print("I am live")
+
 end
 
 function Component2D:draw()
-    love.graphics.setColor(self.color)
-    love.graphics.rectangle("fill", self.position.x, self.position.y, self.body.width, self.body.height)
-    love.graphics.setColor({0,0,0,1})
+
 end
 
 return Component2D

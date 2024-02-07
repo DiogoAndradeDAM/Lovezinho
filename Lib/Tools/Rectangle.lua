@@ -45,4 +45,8 @@ function Rectangle:__sub(other)
     return Rectangle.new(self.position, self.width - other.width, self.height - other.height)
 end
 
+function Rectangle:__tostring()
+    return ("Rectangle(X: %d, Y: %d, W: %d, H: %d)"):format(self.position.x, self.position.y, self.width, self.height)
+end
+
 return Rectangle
