@@ -19,8 +19,8 @@ function Vector2.one()
     return Vector2.new(1,1)
 end
 
-function Vector2.isVector2(vec)
-    if getmetatable(vec) ~= Vector2 then
+function Vector2.isVector2(value)
+    if getmetatable(value) ~= Vector2 then
         return false
     else
         return true

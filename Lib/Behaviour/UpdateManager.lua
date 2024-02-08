@@ -7,6 +7,14 @@ function UpdateManager.new()
     return o
 end
 
+function UpdateManager.isUpdateManager(value)
+    if getmetatable(value) == UpdateManager then
+        return true
+    else
+        return false
+    end
+end
+
 function UpdateManager:update(dt)
     for key, value in ipairs(self.objList) do
         value.update(dt)

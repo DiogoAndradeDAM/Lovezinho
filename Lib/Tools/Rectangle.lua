@@ -11,12 +11,16 @@ function Rectangle.new(pos, w, h)
     return o
 end
 
-function Rectangle.isRectangle(rect)
-    if getmetatable(rect) ~= Rectangle then
+function Rectangle.isRectangle(value)
+    if getmetatable(value) ~= Rectangle then
         return false
     else
         return true
     end
+end
+
+function Rectangle.zero()
+    return Rectangle.new(Vector2.zero(), 0,0)
 end
 
 function Rectangle:getTop()
