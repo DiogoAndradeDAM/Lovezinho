@@ -14,18 +14,27 @@ function UpdateManager:update(dt)
 end
 
 function UpdateManager:add(obj)
-    assert(obj ~= nil, "ERROR: The value passed in UpdateManager is nil")
+    assert(obj ~= nil, "ERROR: The value passed in UpdateManager:add is nil")
     table.insert(self.objList, obj)
 end
 
+function UpdateManager:addFirst(obj)
+    assert(obj ~= nil, "ERROR: The value passed in UpdateManager:addFirst is nil")
+    table.insert(self.objList, 1, obj)
+end
+
 function UpdateManager:remove(obj)
-    
+    assert(obj ~= nil, "ERROR: The value passed in UpdateManager:remove is nil")
     for key, value in pairs(self.objList) do
         if value == obj then
             table.remove(self.objList, key)
             break
         end
     end
+end
+
+function UpdateManager:removeFirst()
+    table.remove(self.objList, 1)
 end
 
 function UpdateManager:clear()

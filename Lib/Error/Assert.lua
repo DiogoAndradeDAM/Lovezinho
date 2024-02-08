@@ -29,4 +29,10 @@ function Assert.isVector2(params)
     end
 end
 
+function Assert.isRectangle(params)
+    if not Rectangle.isRectangle(params.value) then
+        error(("The variable \"%s\" is not a Rectangle instance, your type is %s"):format(params.name, tostring(params.value)), 2)
+    end
+end
+
 return Assert
