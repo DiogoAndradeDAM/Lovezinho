@@ -6,11 +6,18 @@ UpdateManager   =               require    "Lib/Behaviour/UpdateManager"
 Scene           =               require    "Lib/Behaviour/Scene"
 Component2D     =               require    "Lib/2D/Component2D"
 Assert          =               require    "Lib/Error/Assert"
+KeyboardManager =               require    "Lib/Input/Keyboard/KeyboardManager"
 
 function love.load()
+    KeyboardManager.init({'w', 'a', 'd', 's'})
 end
 
 function love.update(dt)
+    KeyboardManager.update()
+
+    if KeyboardManager.isKeyOnePressed('d') then
+        print("Hello World")
+    end
 end
 
 function love.draw()
